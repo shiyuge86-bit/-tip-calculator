@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="A simple, thoughtful tip calculator. Calculate the tip, total bill, and amount per person.">
+  <title>Tip Calculator · Split</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="./index.html" aria-label="Split home"><span class="brand-mark" aria-hidden="true">÷</span>split<span class="brand-dot">.</span></a>
+      <span class="header-caption">A little thanks. A fair share.</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span aria-hidden="true"></span> THE AFTER-DINNER ESSENTIAL</p>
+        <h1 id="page-title">Tip Calculator<span class="title-dot">.</span></h1>
+        <p class="intro-copy">Good company. Good food. An easy way to split the bill.</p>
+      </section>
+
+      <div class="calculator-layout">
+        <section class="input-card" aria-labelledby="details-title">
+          <div class="section-heading"><span class="step-number">01</span><h2 id="details-title">The details</h2><span class="currency-pill">HKD</span></div>
+          <form id="calculator-form" novalidate>
+            <div class="field-group">
+              <label for="bill">Bill amount <span class="field-hint">before tip</span></label>
+              <div class="amount-input"><span aria-hidden="true">HK$</span><input id="bill" name="bill" type="text" inputmode="decimal" autocomplete="off" value="80.00" placeholder="0.00" aria-describedby="bill-error" spellcheck="false"></div>
+              <p id="bill-error" class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field-group">
+              <label for="tip">Tip percentage</label>
+              <div class="select-wrap"><select id="tip" name="tip" aria-describedby="tip-error"><option value="10">10% · A little thanks</option><option value="15" selected>15% · Feeling generous</option><option value="20">20% · Made our day</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></div>
+              <p id="tip-error" class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field-group people-field">
+              <label for="people">Number of people</label>
+              <div class="people-input"><button id="decrease-people" type="button" aria-label="Decrease number of people">−</button><input id="people" name="people" type="text" inputmode="numeric" autocomplete="off" value="3" aria-describedby="people-error" spellcheck="false"><button id="increase-people" type="button" aria-label="Increase number of people">+</button></div>
+              <p id="people-error" class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="form-actions"><button class="calculate-button" type="submit">Calculate split <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button><button id="reset-button" class="reset-button" type="button">Reset</button></div>
+            <p id="form-status" class="form-status" role="status" aria-live="polite">Try the example, or enter your own bill.</p>
+          </form>
+        </section>
+
+        <section id="receipt" class="receipt-card" aria-labelledby="summary-title" aria-live="polite" aria-atomic="true">
+          <div class="receipt-top"><div class="section-heading"><span class="step-number">02</span><h2 id="summary-title">Your split</h2></div><span id="result-status" class="result-status">Example split</span></div>
+          <div class="per-person"><p>Each person pays</p><div class="hero-amount"><span class="money-prefix">HK$</span><output id="result-person">—</output></div><span class="included-label">Tip included. All settled.</span></div>
+          <div class="receipt-breakdown">
+            <div class="receipt-row"><span>Original bill</span><span class="money"><small>HK$</small> <output id="result-base">—</output></span></div>
+            <div class="receipt-row"><span>Tip <span id="result-percent" class="rate-label">15%</span></span><span class="money"><small>HK$</small> <output id="result-tip">—</output></span></div>
+            <div class="receipt-row total-row"><span>Total bill</span><span class="money"><small>HK$</small> <output id="result-total">—</output></span></div>
+          </div>
+          <div class="receipt-footer"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m3 9v-2a6 6 0 0 0-3-5"/></svg><span>Split equally between <strong id="result-split">3 people</strong></span></div>
+          <p id="result-note" class="rounding-note">Amounts are rounded to two decimal places.</p>
+        </section>
+      </div>
+
+      <aside class="how-it-works" aria-label="How the calculation works">
+        <span class="how-title">A simple equation</span>
+        <p><span>(Bill + tip)</span><span class="formula-divider" aria-hidden="true">÷</span><span>People</span><span class="formula-divider" aria-hidden="true">=</span><span>Everyone’s share</span></p>
+      </aside>
+      <noscript><p class="noscript-notice">Please enable JavaScript to calculate your tip and split the bill.</p></noscript>
+    </main>
+    <footer class="site-footer"><span>Made for the moments after a good meal.</span><span>No sign-up. Just the numbers.</span></footer>
+  </div>
+</body>
+</html>
